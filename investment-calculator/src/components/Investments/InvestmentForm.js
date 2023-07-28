@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./InvestmentForm.css";
+import classes from "./InvestmentForm.module.css";
 
 const initialUserInput = {
-    currentSavings: 10000,
-    yearlyContribution: 1200,
-    expectedReturn: 7,
+    "current-savings": 10000,
+    "yearly-contribution": 1200,
+    "expected-return": 7,
     duration: 10,
 };
 
@@ -14,27 +14,29 @@ const InvestmentForm = (props) => {
     const calculateHandler = (event) => {
         event.preventDefault();
         //todo
-        console.log("Calculate clicked");
+        props.onCalculate(userInput);
     };
-    const resetHandler = () => {};
+    const resetHandler = () => {
+        setUserInput(initialUserInput);
+    };
     const inputHandler = (input, value) => {
         setUserInput((prevSavings) => {
-            return { ...prevSavings, [input]: value };
+            return { ...prevSavings, [input]: +value };
         });
     };
     return (
         <form
             onSubmit={calculateHandler}
-            className="form"
+            className={classes.form}
         >
-            <div className="input-group">
+            <div className={classes["input-group"]}>
                 <p>
                     <label htmlFor="current-savings">Current Savings ($)</label>
                     <input
-                        // value={currentSavings}
                         onChange={(event) =>
                             inputHandler("current-savings", event.target.value)
                         }
+                        value={userInput["current-savings"]}
                         type="number"
                         id="current-savings"
                     />
@@ -44,28 +46,28 @@ const InvestmentForm = (props) => {
                         Yearly Savings ($)
                     </label>
                     <input
-                        // value={yearlySavings}
                         onChange={(event) =>
                             inputHandler(
                                 "yearly-contribution",
                                 event.target.value
                             )
                         }
+                        value={userInput["yearly-contribution"]}
                         type="number"
                         id="yearly-contribution"
                     />
                 </p>
             </div>
-            <div className="input-group">
+            <div className={classes["input-group"]}>
                 <p>
                     <label htmlFor="expected-return">
                         Expected Interest (%, per year)
                     </label>
                     <input
-                        // value={expectedInterest}
                         onChange={(event) =>
                             inputHandler("expected-return", event.target.value)
                         }
+                        value={userInput["expected-return"]}
                         type="number"
                         id="expected-return"
                     />
@@ -75,28 +77,26 @@ const InvestmentForm = (props) => {
                         Investment Duration (years)
                     </label>
                     <input
-                        // value={investmentDuration}
                         onChange={(event) =>
                             inputHandler("duration", event.target.value)
                         }
+                        value={userInput["duration"]}
                         type="number"
                         id="duration"
                     />
                 </p>
             </div>
-            <p className="actions">
+            <p className={classes.actions}>
                 <button
                     type="reset"
                     className="buttonAlt"
-                    onClick={() => {
-                        resetHandler();
-                    }}
+                    onClick={resetHandler}
                 >
                     Reset
                 </button>
                 <button
                     type="submit"
-                    className="button"
+                    className={classes.button}
                 >
                     Calculate
                 </button>
