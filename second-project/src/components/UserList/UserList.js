@@ -1,22 +1,17 @@
-import { useState } from "react";
 import classes from "./UserList.module.css";
-import UserInputForm from "../UserInput/UserInputForm";
+import { GrClose } from "react-icons/gr";
 const UserList = (props) => {
-    const [users, setUsers] = useState([]);
-    const [isThereAUser, setIsThereAUser] = useState(false);
-
-    const addUserHandler = (user) => {
-        setUsers((prevUser) => [...prevUser, user]);
-        setIsThereAUser(true);
+    const deleteHandler = (index) => {
+        const newData = props.data.filter((_, i) => i !== index);
+        props.onDeleteUser(newData);
     };
     return (
         <div>
-            <UserInputForm onAddUser={addUserHandler}></UserInputForm>
-            {isThereAUser && (
+            {props.condition && (
                 <div className={classes.container}>
-                    {users.length > 0 && (
+                    {props.data.length >= 0 && (
                         <ul>
-                            {users.map((user, index) => (
+                            {props.data.map((user, index) => (
                                 <li key={index}>
                                     <div className={classes.output}>
                                         <p className={classes.para}>
@@ -25,6 +20,14 @@ const UserList = (props) => {
                                         <p className={classes.para}>
                                             Age: {user.age}
                                         </p>
+                                        <h3 className={classes.head3}>
+                                            <GrClose
+                                                className={classes.myicon}
+                                                onClick={() =>
+                                                    deleteHandler(index)
+                                                }
+                                            />
+                                        </h3>
                                     </div>
                                 </li>
                             ))}
