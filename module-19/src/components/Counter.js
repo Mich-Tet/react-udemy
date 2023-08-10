@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 //imports for Class
 // import { connect } from 'react-redux';
 // import { Component } from 'react';
+import { counterActions } from '../store/counter-slice';
 import { useRef } from 'react';
 import { useState } from 'react';
 const Counter = () => {
@@ -16,17 +17,17 @@ const Counter = () => {
     }
   };
   const dispatch = useDispatch();
-  const incrementHandler = () => dispatch({ type: 'increment' });
+  const incrementHandler = () => dispatch(counterActions.increment());
   const increaseHandler = () =>
-    dispatch({ type: 'increase', amount: parseInt(numberValue.current.value) });
-  const decrementHandler = () => dispatch({ type: 'decrement' });
+    dispatch(counterActions.increase(parseInt(numberValue.current.value)));
+  const decrementHandler = () => dispatch(counterActions.decrement());
   const toggleCounterHandler = () => {
-    dispatch({ type: 'toggle' });
+    dispatch(counterActions.toggle());
   };
 
-  const counter = useSelector((state) => state.counter);
-  const toggle = useSelector((state) => state.showCounter);
-  const resetHandler = () => dispatch({ type: 'reset' });
+  const counter = useSelector((state) => state.counter.counter);
+  const toggle = useSelector((state) => state.counter.showCounter);
+  const resetHandler = () => dispatch(counterActions.reset());
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
