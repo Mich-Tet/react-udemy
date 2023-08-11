@@ -1,18 +1,14 @@
 import { useDispatch } from 'react-redux';
 import Card from '../UI/Card';
 import classes from './ProductItem.module.css';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { cartActions } from '../store/cart-slice';
 const ProductItem = (props) => {
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
 
-  const title = useSelector((state) => state.cart.title);
-  const price = useSelector((state) => state.cart.price);
-  const description = useSelector((state) => state.cart.description);
-
+  const { title, price, description, id } = props;
   const addHandler = (event) => {
     event.preventDefault();
-    disptach(cartActions.increment());
+    dispatch(cartActions.increment({ id, title, price }));
   };
 
   return (
