@@ -1,12 +1,1 @@
-{
-  "events": [
-    {
-      "title": "A new event",
-      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
-      "date": "2022-10-01",
-      "description": "Some awesome event!",
-      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
-    }
-  ],
-  "users": []
-}
+{"events":[{"title":"as","image":"https://www.muenchen.de/sites/default/files/styles/3_2_w320/public/2022-09/tollwood-2017-hp-01.jpg.webp","date":"2023-08-31","description":"as","id":"c29730eb-899f-4970-8263-6e6fa0c1dd62"}],"users":[{"email":"test@test.com","password":"$2a$12$iBz2d8QpWAC5A7aYnhj4ZuIELviyyIZUj/bo4PGjo3dlCzxoQnMiy","id":"76f0b40e-d5f4-46aa-a6ce-241f94321e70"},{"email":"test2@test.com","password":"$2a$12$1bgrNsTBbAQDBWTktxITUOouz5JfKYzvp2s5Z2/vftjymAaHceSEu","id":"67c2fdc1-c20e-4254-a176-44d68976d2a7"}]}
